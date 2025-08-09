@@ -182,8 +182,6 @@ void Timer2Interrupt(void)
 
 void SystemClockInit(void)
 {
-	//	Clock_SysClkSelect(RC_CLK_MODE);
-
 	Clock_Config(1, 24000000);
 	Clock_PllLock(316108);
 
@@ -203,7 +201,7 @@ void SystemClockInit(void)
 
 void LogUartConfig(bool InitBandRate)
 {
-	GPIO_PortAModeSet(GPIOA6, 5); // Tx, A6:uart0_rxd_1
+	GPIO_PortAModeSet(GPIOA6, 5);
 	if (InitBandRate)
 	{
 		DbgUartInit(0, CFG_UART_BANDRATE, 8, 0, 1);
@@ -388,28 +386,17 @@ void set_GPIO()
 	APP_DBG("[SystemInit]   SET GPIO_IN\n");
 }
 
+
+
 int main(void)
 {
-	uint16_t RstFlag = 0;
-	extern char __sdk_code_start;
 
-	#ifdef LDOIN_3V3
-		Chip_Init(0);
-	#else
-		Chip_Init(1);
-	#endif
 
+	Chip_Init(1);
 	WDG_Enable(WDG_STEP_4S);
-	
-	// WDG_Disable();
-	// Clock_HOSCCurrentSet(0xF);
-
-	// #if FLASH_BOOT_EN
-	//	RstFlag = Reset_FlagGet_Flash_Boot();
-	// #else
-	RstFlag = Reset_FlagGet();
+	uint16_t RstFlag = Reset_FlagGet();
 	Reset_FlagClear();
-	// #endif
+	
 
 	BACKUP_NVMInit();
 	Power_LDO12Config(1250);
@@ -421,13 +408,10 @@ int main(void)
 	Remap_DisableTcm();
 	Remap_InitTcm(FLASH_ADDR, 8);
 
-#ifdef FUNC_OS_DEBUG
-	memcpy((void *)0x20000000, (void *)(0x40000), 20 * 1024);
-	Remap_AddrRemapSet(ADDR_REMAP1, 0x40000, 0x20000000, 20);
-#else
-	memcpy((void *)0x20006000, (void *)(&__sdk_code_start), TCM_SIZE * 1024);
-	Remap_AddrRemapSet(ADDR_REMAP1, (uint32_t)(&__sdk_code_start), 0x20006000, TCM_SIZE);
-#endif
+	extern char __sdk_code_start;
+	memcpy((void *)0x20006000, (void *)(&__sdk_code_start), 12 * 1024);
+	Remap_AddrRemapSet(ADDR_REMAP1, (uint32_t)(&__sdk_code_start), 0x20006000, 12);
+
 
 	if (Clock_CoreClockFreqGet() == 360 * 1000000)
 	{
@@ -443,8 +427,8 @@ int main(void)
 	}
 	Clock_RC32KClkDivSet(Clock_RcFreqGet(TRUE) / 32000);
 
-	// SpiFlashIOCtrl(IOCTL_FLASH_PROTECT, FLASH_LOCK_RANGE_HALF);
 
+	
 	prvInitialiseHeap();
 	osSemaphoreMutexCreate();
 

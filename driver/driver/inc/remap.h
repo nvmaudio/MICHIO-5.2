@@ -49,35 +49,35 @@ typedef enum
 }REMAP_ERROR;
 
 /**
- * @brief	Ê¹ÄÜremap¹¦ÄÜ
- * @param	num	 ÓÐADDR_REMAP1¡¢ADDR_REMAP2£¬Ö¸¶¨Ò»¸ö¼´¿É
- * @param	src	 Ô´µØÖ·£¬±ØÐë4KB¶ÔÆë
- * @param	dst	 Ä¿µÄµØÖ·£¬±ØÐë4KB¶ÔÆë
- * @param	size µ¥Î»ÊÇKB£¬±ØÐë4KB¶ÔÆë
- * @return	´íÎóÂë£¬ÏêÇé¼ûREMAP_ERROR
+ * @brief	Ê¹ï¿½ï¿½remapï¿½ï¿½ï¿½ï¿½
+ * @param	num	 ï¿½ï¿½ADDR_REMAP1ï¿½ï¿½ADDR_REMAP2ï¿½ï¿½Ö¸ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param	src	 Ô´ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4KBï¿½ï¿½ï¿½ï¿½
+ * @param	dst	 Ä¿ï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4KBï¿½ï¿½ï¿½ï¿½
+ * @param	size ï¿½ï¿½Î»ï¿½ï¿½KBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4KBï¿½ï¿½ï¿½ï¿½
+ * @return	ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½REMAP_ERROR
  * @note
  */
 REMAP_ERROR Remap_AddrRemapSet(ADDR_REMAP_ID num, uint32_t src, uint32_t dst, uint32_t size);
 
 /**
- * @brief	¹Ø±Õremap¹¦ÄÜ
- * @param	num	 ÓÐADDR_REMAP1¡¢ADDR_REMAP2£¬Ö¸¶¨Ò»¸ö¼´¿É
- * @return	´íÎóÂë£¬ÏêÇé¼ûREMAP_ERROR
+ * @brief	ï¿½Ø±ï¿½remapï¿½ï¿½ï¿½ï¿½
+ * @param	num	 ï¿½ï¿½ADDR_REMAP1ï¿½ï¿½ADDR_REMAP2ï¿½ï¿½Ö¸ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @return	ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½REMAP_ERROR
  * @note
  */
 void Remap_AddrRemapDisable(ADDR_REMAP_ID num);
 
 /**
- * @brief	Ê¹ÄÜTCM¹¦ÄÜ£¬Ö÷ÒªÊÇ½«flashÇý¶¯Ó³Éäµ½memcpyÖÐ
- * @param	StartAddr	Ô´µØÖ·£¬±ØÐë4KB¶ÔÆë
- * @param	size 		µ¥Î»ÊÇKB£¬±ØÐë4KB¶ÔÆë
- * @return	´íÎóÂë£¬ÏêÇé¼ûREMAP_ERROR
+ * @brief	Ê¹ï¿½ï¿½TCMï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Òªï¿½Ç½ï¿½flashï¿½ï¿½ï¿½ï¿½Ó³ï¿½äµ½memcpyï¿½ï¿½
+ * @param	StartAddr	Ô´ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4KBï¿½ï¿½ï¿½ï¿½
+ * @param	size 		ï¿½ï¿½Î»ï¿½ï¿½KBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4KBï¿½ï¿½ï¿½ï¿½
+ * @return	ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½REMAP_ERROR
  * @note
  */
 REMAP_ERROR Remap_InitTcm(uint32_t StartAddr, uint32_t size);
 
 /**
- * @brief	½ûÄÜTCM¹¦ÄÜ
+ * @brief	ï¿½ï¿½ï¿½ï¿½TCMï¿½ï¿½ï¿½ï¿½
  * @param	None
  * @return	None
  * @note
