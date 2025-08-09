@@ -1,0 +1,2 @@
+RseFlashDriverModel=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><rseFlashDriverModel><addr>0x0</addr><eraseAll>false</eraseAll><flashDriver>o26_download_v0.9</flashDriver><imageFile>C\:\\Users\\veeum\\OneDrive\\M\u00E1y t\u00EDnh\\MICHIO 5.2\\Release\\output\\BT_Audio_APP.bin</imageFile><lock>false</lock><unlock>false</unlock><verify>true</verify></rseFlashDriverModel>
+eclipse.preferences.version=1
